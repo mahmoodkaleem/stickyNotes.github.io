@@ -5,7 +5,7 @@ const addButton = document.getElementById("add-btn");
 addButton.addEventListener("click", () => {
   addNote();
 });
-let notesIndex=0;
+let notesIndex = 0;
 //add new notes box
 const addNote = (localData = "") => {
   notesIndex++;
@@ -34,7 +34,7 @@ const addNote = (localData = "") => {
   const deleteNotes = () => {
     box.remove();
     saveNotes();
-    location.reload()
+    location.reload();
   };
 
   //save notes by onClick
@@ -59,7 +59,6 @@ const addNote = (localData = "") => {
     } else {
       localStorage.setItem("notes", data);
     }
-    
   };
 
   //background color buttton
@@ -69,42 +68,41 @@ const addNote = (localData = "") => {
   });
 
   //function for randomcolor of textarea background
-  const bgColorCode = ( ) => {
+  const bgColorCode = () => {
     let textarea = box.querySelector("textarea");
     ColorNum = Math.floor(Math.random() * 16777215);
     hexCode = "#" + ColorNum.toString(16);
     if (hexCode.length < 7) {
       hexCode = hexCode + 1;
       textarea.style.backgroundColor = hexCode;
-      colorBtn.style.color= hexCode;
+      colorBtn.style.color = hexCode;
     } else {
       textarea.style.backgroundColor = hexCode;
-      colorBtn.style.color= hexCode;
+      colorBtn.style.color = hexCode;
     }
   };
 
-//font color buttton
-const fontColorBtn = box.querySelector(".font-color");
-fontColorBtn.addEventListener("click", () => {
-  fontColorCode();
-});
+  //font color buttton
+  const fontColorBtn = box.querySelector(".font-color");
+  fontColorBtn.addEventListener("click", () => {
+    fontColorCode();
+  });
 
-//function for randomcolor of textarea font
-const fontColorCode = () => {
+  //function for randomcolor of textarea font
+  const fontColorCode = () => {
     let textarea = box.querySelector("textarea");
     ColorNum = Math.floor(Math.random() * 16777215);
     hexCode = "#" + ColorNum.toString(16);
-    localStorage.setItem("color",hexCode)
+    localStorage.setItem("color", hexCode);
     if (hexCode.length < 7) {
       hexCode = hexCode + 1;
       textarea.style.color = hexCode;
-      fontColorBtn.style.color= hexCode;
+      fontColorBtn.style.color = hexCode;
     } else {
       textarea.style.color = hexCode;
-      fontColorBtn.style.color= hexCode;
+      fontColorBtn.style.color = hexCode;
     }
   };
-
 };
 
 //iife function for page refrash and resotre saved data
