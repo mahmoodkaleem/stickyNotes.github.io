@@ -5,18 +5,23 @@ const addButton = document.getElementById("add-btn");
 addButton.addEventListener("click", () => {
   addNote();
 });
-
+let notesIndex=0;
 //add new notes box
 const addNote = (localData = "") => {
+  notesIndex++;
   const box = document.createElement("div");
   box.classList.add("box");
-  box.innerHTML = `<h1 id="tool-bar">
-  <i class="font-color fa-solid fa-pen"></i>
-  <i class="color fa-sharp fa-solid fa-paintbrush"></i>
-  <i class="save fa-solid fa-floppy-disk"></i>
-  <i class="trash fa-solid fa-trash"></i>
+
+  box.innerHTML = `<div id="tool-bar">
+  <h1 class="name">Notes-${notesIndex}</h1>
+  <h1 id="tool-icon">
+    <i class="font-color fa-solid fa-pen" title="font-color"></i>
+    <i class="color fa-sharp fa-solid fa-paintbrush" title="bg-color"></i>
+    <i class="save fa-solid fa-floppy-disk" title="save"></i>
+    <i class="trash fa-solid fa-trash" title="delete"></i>
   </h1>
-  <textarea name="Title" id="textarea" >${localData}</textarea>`;
+</div>
+  <textarea name="Title" id="textarea">${localData}</textarea>`;
   main.appendChild(box);
 
   //delete notes box
@@ -29,6 +34,7 @@ const addNote = (localData = "") => {
   const deleteNotes = () => {
     box.remove();
     saveNotes();
+    location.reload()
   };
 
   //save notes by onClick
